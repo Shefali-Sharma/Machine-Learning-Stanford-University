@@ -30,12 +30,21 @@ X = [ones(m, 1) X];
 %       for each row.
 %
 
-disp(max(all_theta, [], 2));
-for c = 1:num_labels
 
-end
+% res = (sigmoid(X * theta));
 
+% for i = 1:length(res)
+%   if (res(i) >= 0.5)
+%     p(i) = 1;
+%   endif
+% endfor
 
+res = sigmoid(X * all_theta');
+
+[a p] = max(res, [], 2);
+
+% disp(p);
+% disp(a);
 
 % =========================================================================
 
