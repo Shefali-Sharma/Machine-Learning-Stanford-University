@@ -23,8 +23,19 @@ X = [ones(m, 1) X];
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+A = sigmoid(X * Theta1');
 
+% Add ones to the A data matrix
+A = [ones(m, 1) A];
 
+% size(X)
+% size(Theta1')
+% size(A)
+% size(Theta2')
+
+res = sigmoid(A * Theta2');
+
+[b p] = max(res, [], 2);
 
 
 
