@@ -30,15 +30,6 @@ X = [ones(m, 1) X];
 %       for each row.
 %
 
-
-% res = (sigmoid(X * theta));
-
-% for i = 1:length(res)
-%   if (res(i) >= 0.5)
-%     p(i) = 1;
-%   endif
-% endfor
-
 res = sigmoid(X * all_theta');
 
 [a p] = max(res, [], 2);
