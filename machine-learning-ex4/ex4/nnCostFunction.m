@@ -39,6 +39,34 @@ Theta2_grad = zeros(size(Theta2));
 %         cost function computation is correct by verifying the cost
 %         computed in ex4.m
 %
+
+x1 = [ones(m, 1) X];
+x2 = sigmoid(x1 * Theta1');
+
+x3 = [ones(m, 1) x2];
+x4 = sigmoid(x3 * Theta2');
+
+% disp(size(X));
+% disp(size(x1));
+
+% disp(size(x2));
+% disp(size(x3));
+
+% disp(size(Theta2));
+% disp(size(x4));
+
+% disp(y);
+
+yLog = 0;
+oneMinusYLog = 0;
+for l = 1:num_labels
+  k = y == l;
+  yLog = k .* log(x4(:,l));
+  oneMinusYLog = (1 - k) .* log(1 - x4(:,l));
+  Jl = (1/m * sum(-yLog - oneMinusYLog));
+  J = J + Jl;
+end
+
 % Part 2: Implement the backpropagation algorithm to compute the gradients
 %         Theta1_grad and Theta2_grad. You should return the partial derivatives of
 %         the cost function with respect to Theta1 and Theta2 in Theta1_grad and
@@ -54,6 +82,15 @@ Theta2_grad = zeros(size(Theta2));
 %               over the training examples if you are implementing it for the
 %               first time.
 %
+
+
+
+
+% Theta1_grad = (1/m) * (x1' * (x2 - y));
+% Theta1_grad = (1/m) * (x3' * (x4 - y));
+
+
+
 % Part 3: Implement regularization with the cost function and gradients.
 %
 %         Hint: You can implement this around the code for
@@ -63,29 +100,14 @@ Theta2_grad = zeros(size(Theta2));
 %
 
 
+
+% grad = my_grad + ((lambda/m) .* theta);
+
 % function [J grad] = nnCostFunction(nn_params, ...
 %                                    input_layer_size, ...
 %                                    hidden_layer_size, ...
 %                                    num_labels, ...
 %                                    X, y, lambda)
-
-% J(Θ)=1/m∑i=1m∑k=1K[y(i)klog((hΘ(x(i)))k)+(1−y(i)k)log(1−(hΘ(x(i)))k)]+λ2m∑l=1L−1∑i=1sl∑j=1sl+1(Θ(l)j,i)2
-% K = Total possible labels
-
-disp(nn_params.size());
-
-for l in num_labels:
-  disp(l);
-endfor
-
-
-
-
-
-
-
-
-
 
 
 
