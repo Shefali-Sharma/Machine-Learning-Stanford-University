@@ -91,6 +91,18 @@ y_numlabels = eye(num_labels)(y,:);
 a3 = z3;
 d3 = a3 - y_numlabels;
 % disp(size(d3));
+sigGra = sigmoidGradient(z2);
+sigGra = [ones(m,1) sigGra];
+% disp(size(sigGra));
+
+% disp(size(Theta2));
+% disp(size(d3));
+% disp(size((d3 * Theta2)));
+d2 = (d3 * Theta2) .* sigGra;
+% disp(size(d2));
+d2 = d2(:, 2:end);
+% disp(size(d2));
+
 
 
 % grad = my_grad + ((lambda/m) .* theta);
