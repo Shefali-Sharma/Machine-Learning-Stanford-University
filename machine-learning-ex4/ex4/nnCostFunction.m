@@ -103,6 +103,9 @@ d2 = (d3 * Theta2) .* sigGra;
 d2 = d2(:, 2:end);
 % disp(size(d2));
 
+delta1 = d2' * a1;
+delta2 = d3' * a2;
+
 
 
 % grad = my_grad + ((lambda/m) .* theta);
