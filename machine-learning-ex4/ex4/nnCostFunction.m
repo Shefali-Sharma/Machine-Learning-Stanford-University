@@ -119,19 +119,6 @@ Theta2_grad = Theta2_grad + (1/m) * delta2;
 
 Theta1_grad(:,2:end) = Theta1_grad(:,2:end) + (lambda/m)*Theta1;
 Theta2_grad(:,2:end) = Theta2_grad(:,2:end) + (lambda/m)*Theta2;
-
-% grad = my_grad + ((lambda/m) .* theta);
-
-% function [J grad] = nnCostFunction(nn_params, ...
-%                                    input_layer_size, ...
-%                                    hidden_layer_size, ...
-%                                    num_labels, ...
-%                                    X, y, lambda)
-
-
-
-% -------------------------------------------------------------
-
 % =========================================================================
 
 % Unroll gradients
