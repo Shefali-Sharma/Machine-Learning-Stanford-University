@@ -40,20 +40,20 @@ Theta2_grad = zeros(size(Theta2));
 %         computed in ex4.m
 %
 
-x1 = [ones(m, 1) X];
-x2 = sigmoid(x1 * Theta1');
-
-x3 = [ones(m, 1) x2];
-x4 = sigmoid(x3 * Theta2');
+a1 = [ones(m, 1) X];
+z2 = (a1 * Theta1');
+a2 = sigmoid(z2);
+a2 = [ones(m, 1) a2];
+z3 = sigmoid(a2 * Theta2');
 
 % disp(size(X));
-% disp(size(x1));
+% disp(size(a1));
 
-% disp(size(x2));
-% disp(size(x3));
+% disp(size(z2));
+% disp(size(a2));
 
 % disp(size(Theta2));
-% disp(size(x4));
+% disp(size(z3));
 
 % disp(y);
 
@@ -61,8 +61,8 @@ yLog = 0;
 oneMinusYLog = 0;
 for l = 1:num_labels
   k = y == l;
-  yLog = k .* log(x4(:,l));
-  oneMinusYLog = (1 - k) .* log(1 - x4(:,l));
+  yLog = k .* log(z3(:,l));
+  oneMinusYLog = (1 - k) .* log(1 - z3(:,l));
   Jl = (1/m * sum(-yLog - oneMinusYLog));
   J = J + Jl;
 end
@@ -84,22 +84,6 @@ J = J + (lambda/(2*m))*((sum(sum(Theta1(:,2:end).^2))) + sum(sum(Theta2(:,2:end)
 %         Hint: We recommend implementing backpropagation using a for-loop
 %               over the training examples if you are implementing it for the
 %               first time.
-%
-
-
-
-
-% Theta1_grad = (1/m) * (x1' * (x2 - y));
-% Theta1_grad = (1/m) * (x3' * (x4 - y));
-
-
-
-% Part 3: Implement regularization with the cost function and gradients.
-%
-%         Hint: You can implement this around the code for
-%               backpropagation. That is, you can compute the gradients for
-%               the regularization separately and then add them to Theta1_grad
-%               and Theta2_grad from Part 2.
 %
 
 
