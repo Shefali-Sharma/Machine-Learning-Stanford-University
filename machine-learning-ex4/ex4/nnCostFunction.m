@@ -86,6 +86,11 @@ J = J + (lambda/(2*m))*((sum(sum(Theta1(:,2:end).^2))) + sum(sum(Theta2(:,2:end)
 %               first time.
 %
 
+y_numlabels = eye(num_labels)(y,:);
+% disp(size(y_numlabels));
+a3 = z3;
+d3 = a3 - y_numlabels;
+% disp(size(d3));
 
 
 % grad = my_grad + ((lambda/m) .* theta);
